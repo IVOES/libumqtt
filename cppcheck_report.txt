@@ -1,0 +1,62 @@
+src/umqtt.c:249:36: style:inconclusive: Boolean expression 'pkt->flags>1' is used in bitwise operation. Did you mean '&&'? [bitwiseOnBoolean]
+    uint8_t qos = (pkt->flags > 1) & 0x03;
+                                   ^
+src/umqtt.c:250:33: style:inconclusive: Boolean expression 'pkt->flags>3' is used in bitwise operation. Did you mean '&&'? [bitwiseOnBoolean]
+    bool dup = (pkt->flags > 3) & 0x1;
+                                ^
+src/umqtt.c:473:51: style:inconclusive: Boolean expression 'dup' is used in bitwise operation. Did you mean '&&'? [bitwiseOnBoolean]
+    buffer_put_u8(wb, (UMQTT_PUBLISH << 4) | (dup & 0x1 << 3) | (qos << 1) | retain);
+                                                  ^
+src/umqtt.c:473:76: style:inconclusive: Boolean expression 'retain' is used in bitwise operation. Did you mean '||'? [bitwiseOnBoolean]
+    buffer_put_u8(wb, (UMQTT_PUBLISH << 4) | (dup & 0x1 << 3) | (qos << 1) | retain);
+                                                                           ^
+src/umqtt.c:725:19: style: Condition 'cl->state==UMQTT_STATE_PARSE_FH' is always true [knownConditionTrueFalse]
+    if (cl->state == UMQTT_STATE_PARSE_FH && cl->on_net_connected)
+                  ^
+src/umqtt.c:723:21: note: Assignment 'cl->state=UMQTT_STATE_PARSE_FH', assigned value is 2
+        cl->state = UMQTT_STATE_PARSE_FH;
+                    ^
+src/umqtt.c:725:19: note: Condition 'cl->state==UMQTT_STATE_PARSE_FH' is always true
+    if (cl->state == UMQTT_STATE_PARSE_FH && cl->on_net_connected)
+                  ^
+src/umqtt.c:525:31: error: Null pointer dereference: (struct umqtt_client*)NULL [nullPointer]
+    struct umqtt_client *cl = container_of(w, struct umqtt_client, timer);
+                              ^
+src/umqtt.c:783:31: error: Null pointer dereference: (struct umqtt_client*)NULL [nullPointer]
+    struct umqtt_client *cl = container_of(w, struct umqtt_client, ior);
+                              ^
+src/umqtt.c:825:31: error: Null pointer dereference: (struct umqtt_client*)NULL [nullPointer]
+    struct umqtt_client *cl = container_of(w, struct umqtt_client, iow);
+                              ^
+src/umqtt.c:314:14: style: The scope of the variable 'p' can be reduced. [variableScope]
+    uint8_t *p;
+             ^
+src/umqtt.c:813:9: error: Uninitialized variable: eof [uninitvar]
+    if (eof) {
+        ^
+src/umqtt.c:813:9: error: Uninitialized variable: eof [uninitvar]
+    if (eof) {
+        ^
+src/umqtt.c:793:11: note: Assuming condition is true
+    if (cl->ssl) {
+          ^
+src/umqtt.c:813:9: note: Uninitialized variable: eof
+    if (eof) {
+        ^
+src/umqtt.c:739:10: style: The scope of the variable 'err_buf' can be reduced. [variableScope]
+    char err_buf[128];
+         ^
+src/umqtt.c:763:17: style: The scope of the variable 'err_buf' can be reduced. [variableScope]
+    static char err_buf[128];
+                ^
+src/umqtt.c:835:21: style: The scope of the variable 'err_buf' can be reduced. [variableScope]
+        static char err_buf[128];
+                    ^
+src/utils.c:45:5: warning: %u in format string (no. 1) requires 'unsigned int' but the argument type is 'signed int'. [invalidPrintfArgType_uint]
+    snprintf(buffer, sizeof(buffer), "%u", port);
+    ^
+src/lua/umqtt_lua.c:464:0: style: The function 'luaopen_umqtt' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+
